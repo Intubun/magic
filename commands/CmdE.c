@@ -905,7 +905,7 @@ CmdExpand(
 	    case EXPAND_SELECTION:
 		SelectExpand(windowMask,
 			(doToggle) ? DB_EXPAND_TOGGLE : DB_EXPAND,
-			(Rect *)NULL, FALSE);
+			(Rect *)NULL);
 		break;
 	    case EXPAND_OVERLAP:
 		if (doToggle)
@@ -914,8 +914,8 @@ CmdExpand(
 				DB_EXPAND_TOGGLE | DB_EXPAND_OVERLAP,
 				cmdExpandFunc, (ClientData)(pointertype)windowMask);
 		    SelectExpand(windowMask, 
-				DB_EXPAND_TOGGLE | DB_EXPAND_OVERLAP,
-				&rootRect, FALSE);
+			DB_EXPAND_TOGGLE | DB_EXPAND_OVERLAP,
+			&rootRect);
 		}
 		else
 		{
@@ -923,8 +923,8 @@ CmdExpand(
 				DB_EXPAND | DB_EXPAND_OVERLAP,
 				cmdExpandFunc, (ClientData)(pointertype)windowMask);
 		    SelectExpand(windowMask, 
-				DB_EXPAND | DB_EXPAND_OVERLAP,
-				&rootRect, FALSE);
+			DB_EXPAND | DB_EXPAND_OVERLAP,
+			&rootRect);
 		}
 		break;
 	    case EXPAND_SURROUND:
@@ -934,8 +934,8 @@ CmdExpand(
 				DB_EXPAND_TOGGLE | DB_EXPAND_SURROUND,
 				cmdExpandFunc, (ClientData)(pointertype)windowMask);
 		    SelectExpand(windowMask, 
-				DB_EXPAND_TOGGLE | DB_EXPAND_SURROUND,
-				&rootRect, TRUE);
+			DB_EXPAND_TOGGLE | DB_EXPAND_SURROUND,
+			&rootRect);
 		}
 		else
 		{
@@ -943,8 +943,8 @@ CmdExpand(
 				DB_EXPAND | DB_EXPAND_SURROUND,
 				cmdExpandFunc, (ClientData)(pointertype)windowMask);
 		    SelectExpand(windowMask, 
-				DB_EXPAND | DB_EXPAND_SURROUND,
-				&rootRect, TRUE);
+			DB_EXPAND | DB_EXPAND_SURROUND,
+			&rootRect);
 		}
 		break;
 	    case EXPAND_ALL:
@@ -954,8 +954,8 @@ CmdExpand(
 				DB_EXPAND | DB_EXPAND_OVERLAP,
 				cmdExpandFunc, (ClientData)(pointertype)windowMask);
 		    SelectExpand(windowMask, 
-				DB_EXPAND | DB_EXPAND_OVERLAP,
-				(Rect *)NULL, FALSE);
+			DB_EXPAND | DB_EXPAND_OVERLAP,
+			(Rect *)NULL);
 		}
 		else
 		{
@@ -963,8 +963,8 @@ CmdExpand(
 				DB_EXPAND | DB_EXPAND_OVERLAP,
 				cmdExpandFunc, (ClientData)(pointertype)windowMask);
 		    SelectExpand(windowMask, 
-				DB_EXPAND | DB_EXPAND_OVERLAP,
-				(Rect *)NULL, FALSE);
+			DB_EXPAND | DB_EXPAND_OVERLAP,
+			(Rect *)NULL);
 		}
 		break;
 	}

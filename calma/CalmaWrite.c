@@ -96,7 +96,7 @@ typedef struct {
 } calmaOutputStruct;
 
     /* Forward declarations */
-extern int calmaWriteInitFunc(CellDef *def);
+extern int calmaWriteInitFunc(CellDef *def, ClientData cdata);
 extern int calmaWritePaintFunc(Tile *tile, TileType dinfo, calmaOutputStruct *cos);
 extern int calmaMergePaintFunc(Tile *tile, TileType dinfo, calmaOutputStruct *cos);
 extern int calmaWriteUseFunc(CellUse *use, FILE *f);
@@ -386,7 +386,6 @@ CalmaWrite(
      * Destroy all contact cell definitions
      */
     if (CalmaContactArrays) calmaDelContacts();
-
     HashFreeKill(&calmaLibHash);
     HashKill(&calmaPrefixHash);
     HashFreeKill(&calmaUndefHash);
@@ -824,7 +823,8 @@ done:
 
 int
 calmaWriteInitFunc(
-    CellDef *def)
+    CellDef *def,
+    ClientData cdata)
 {
     def->cd_client = (ClientData) 0;
     return (0);
@@ -1409,7 +1409,7 @@ calmaOutFunc(
 		ll = ll->ll_next;
 		freeMagic1_end(&mm1);
 		i++;
-	    }	
+	    }
 
 	    qsort(pllist, numports, sizeof(PortLabel), compport);
 

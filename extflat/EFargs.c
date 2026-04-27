@@ -305,11 +305,10 @@ EFArgs(argc, argv, err_result, argsProc, cdata)
     if (EFArgTech) (void) sprintf(EFLibPath, EXT_PATH, EFArgTech);
 
     if (inname == NULL)
-#ifdef MAGIC_WRAPPER
+    {
+	if (err_result != NULL) *err_result = TRUE;
 	return NULL;
-#else
-	goto usage;
-#endif
+    }
 
     /* Eliminate trailing .ext from input name */
     if ((cp = strrchr(inname, '.')) && strcmp(cp, ".ext") == 0)
@@ -367,7 +366,7 @@ efLoadSearchPath(path)
     PaVisitFiles(DOT_MAGIC_PATH, ".magicrc", pv);
     PaVisitFree(pv);
     if (*path == NULL)
-	*path = ".";
+	StrDup(path, ".");
 }
 
 int

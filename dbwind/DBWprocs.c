@@ -130,27 +130,26 @@ DBWcreate(window, argc, argv)
     window->w_clientData = (ClientData) crec;
     if (argc > 0)
 	DBWloadWindow(window, argv[0], DBW_LOAD_IGNORE_TECH);
-    else if (ToolGetBox(&boxDef, &box))
-    {
-	DBWloadWindow(window, boxDef->cd_name, DBW_LOAD_IGNORE_TECH);
-
-	/* Zoom in on the box, leaving a 10% border or at least 2 units
-	 * on each side.
-	 */
-
-	expand = (box.r_xtop - box.r_xbot)/20;
-	if (expand < 2) expand = 2;
-	box.r_xtop += expand;
-	box.r_xbot -= expand;
-	expand = (box.r_ytop - box.r_ybot)/20;
-	if (expand < 2) expand = 2;
-	box.r_ytop += expand;
-	box.r_ybot -= expand;
-	WindMove(window, &box);
-    }
     else
     {
-	DBWloadWindow(window, (char *) NULL, DBW_LOAD_IGNORE_TECH);
+	if (ToolGetBox(&boxDef, &box))
+	{
+	    DBWloadWindow(window, boxDef->cd_name, DBW_LOAD_IGNORE_TECH);
+
+	    expand = (box.r_xtop - box.r_xbot)/20;
+	    if (expand < 2) expand = 2;
+	    box.r_xtop += expand;
+	    box.r_xbot -= expand;
+	    expand = (box.r_ytop - box.r_ybot)/20;
+	    if (expand < 2) expand = 2;
+	    box.r_ytop += expand;
+	    box.r_ybot -= expand;
+	    WindMove(window, &box);
+	}
+	else
+	{
+	    DBWloadWindow(window, (char *) NULL, DBW_LOAD_IGNORE_TECH);
+	}
     }
     return TRUE;
 }

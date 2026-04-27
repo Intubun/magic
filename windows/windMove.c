@@ -340,7 +340,9 @@ WindCreate(client, frameArea, isHint, argc, argv)
 #endif
 
     if (OK && (GrCreateWindowPtr != NULL))
+    {
 	OK = (*GrCreateWindowPtr)(w, (argc > 1) ? argv[1] : NULL);
+    }
 
     if (OK)
     {
