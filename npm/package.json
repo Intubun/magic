@@ -1,5 +1,5 @@
 {
-  "name": "magic-vlsi-wasm",
+  "name": "@intubun/magic-vlsi-wasm",
   "version": "0.0.0-dev",
   "description": "Magic VLSI Layout Tool — headless WebAssembly build",
   "type": "module",
@@ -29,6 +29,9 @@
   },
 
   "keywords": ["magic", "vlsi", "eda", "wasm", "webassembly", "layout"],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "license": "HPND",
   "engines": {
     "node": ">=18"
