@@ -9,8 +9,26 @@ SPICE netlists; run DRC; extract parasitics — anywhere JavaScript runs.
 
 ## Install
 
+The package is published to GitHub Packages. Add the following to your
+project's `.npmrc` so npm knows where to find it:
+
+```
+@rtimothyedwards:registry=https://npm.pkg.github.com
+```
+
+Then install:
+
 ```bash
-npm install magic-vlsi-wasm
+npm install @rtimothyedwards/magic-vlsi-wasm
+```
+
+If the package is private or you hit a 401, authenticate with a GitHub
+[personal access token](https://github.com/settings/tokens) that has the
+`read:packages` scope:
+
+```
+//npm.pkg.github.com/:_authToken=YOUR_TOKEN
+@rtimothyedwards:registry=https://npm.pkg.github.com
 ```
 
 Requires Node.js 18 or newer.
